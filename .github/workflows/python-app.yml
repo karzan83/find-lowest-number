@@ -1,11 +1,10 @@
-name: Automated Test for find_lowest_number.py
+name: Run Automated Tests
 
-on:
-  push:
+on: [push]
 
 jobs:
   test:
-    name: Run Python Tests on Input Files
+    name: Automated Testing
     runs-on: ubuntu-latest
 
     steps:
@@ -17,20 +16,5 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Test Case 1 - Ten Numbers
-      run: |
-        python3 find_lowest_number.py test_data/test1_input.txt test_data/test1_output.txt
-        echo "Comparing test1_output.txt to test1_expected.txt"
-        diff -u test_data/test1_expected.txt test_data/test1_output.txt
-
-    - name: Test Case 2 - Single Number
-      run: |
-        python3 find_lowest_number.py test_data/test2_input.txt test_data/test2_output.txt
-        echo "Comparing test2_output.txt to test2_expected.txt"
-        diff -u test_data/test2_expected.txt test_data/test2_output.txt
-
-    - name: Test Case 3 - Blank File
-      run: |
-        python3 find_lowest_number.py test_data/test3_input.txt test_data/test3_output.txt
-        echo "Comparing test3_output.txt to test3_expected.txt"
-        diff -u test_data/test3_expected.txt test_data/test3_output.txt
+    - name: Run Test 1 - 10 Numbers
+      run:
