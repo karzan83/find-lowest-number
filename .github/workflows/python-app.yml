@@ -1,12 +1,11 @@
-name: Run Automated Tests
+name: Automated Testing
 
-on: [push]
+on:
+  push:
 
 jobs:
   test:
-    name: Automated Testing
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v3
@@ -16,5 +15,17 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Run Test 1 - 10 Numbers
-      run:
+    - name: Run Test Case 1
+      run: |
+        python3 find_lowest_number.py test_data/test1_input.txt test1_output.txt
+        diff test1_output.txt test_data/test1_expected.txt
+
+    - name: Run Test Case 2
+      run: |
+        python3 find_lowest_number.py test_data/test2_input.txt test2_output.txt
+        diff test2_output.txt test_data/test2_expected.txt
+
+    - name: Run Test Case 3
+      run: |
+        python3 find_lowest_number.py test_data/test3_input.txt test3_output.txt
+        diff test3_output.txt test_data/test3_expected.txt
